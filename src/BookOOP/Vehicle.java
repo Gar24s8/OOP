@@ -1,5 +1,8 @@
 package BookOOP;
 
+/* Добавление параметризированного метода fuelneeded(), в котором выполняется расчет объема топлива,
+необходимого транспортнуму средству для преодоления заданного расстояния.
+ */
 public class Vehicle {
     int passengers; //количество пассажиров
     int fuelcap; //емкость топливного бака
@@ -8,14 +11,21 @@ public class Vehicle {
     int range() {
         return mpg * fuelcap; // возврат дальности поездки для заданного транспортного средства
     }
+
+    // Расчет количества топлива,
+    //необходимого транспортнуму средству для преодоления заданного расстояния.
+    double fuelneeded(int miles) {
+        return (double) miles / mpg;
+    }
 }
 
 // в этом классе объявляется объект типа Vehicle
-class ReturnMeth {
+class CompFuel {
     public static void main(String[] args) {
         Vehicle minivan = new Vehicle();
         Vehicle sportcar = new Vehicle();
-        int range1, range2;
+        double gallons;
+        int dist = 252;
 
         // присваиваем значение полям в объекте minivan
         minivan.passengers = 7;
@@ -27,11 +37,10 @@ class ReturnMeth {
         sportcar.fuelcap = 14;
         sportcar.mpg = 12;
 
-        range1 = minivan.range(); // Присваивание переменной значения, возвращаемого методом
-        range2 = sportcar.range();
+        gallons = minivan.fuelneeded(dist);
+        System.out.println("Для преодоления " + dist + " миль фургону потребуется " + gallons + " галлонов топлива");
 
-        // Расчет дальности поездки с полным баком горючего
-        System.out.println("Минифургон может привезти " + minivan.passengers + " пассажиров на расстояние " + range1 + " миль.");
-        System.out.println("Спортивный автомобиль может привезти " + sportcar.passengers + " пассажиров на расстояние " + range2 + " миль.");
+        gallons = sportcar.fuelneeded(dist);
+        System.out.println("Для преодоления " + dist + " миль спорткару потребуется " + gallons + " галлонов топлива");
     }
 }

@@ -4,10 +4,14 @@ public class Vehicle {
     int passengers; //количество пассажиров
     int fuelcap; //емкость топливного бака
     int mpg; // средний расход топлива
+
+    void range() {
+        System.out.println("Дальность - " + fuelcap * mpg + " миль.");
+    }
 }
 
 // в этом классе объявляется объект типа Vehicle
-class VehicleDemo {
+class AddMeth {
     public static void main(String[] args) {
         Vehicle minivan = new Vehicle();
         Vehicle sportcar = new Vehicle();
@@ -24,9 +28,9 @@ class VehicleDemo {
         sportcar.mpg = 12;
 
         // Расчет дальности поездки с полным баком горючего
-        range1 = minivan.fuelcap * minivan.mpg;
-        range2 = sportcar.fuelcap* sportcar.mpg;
-        System.out.println("Минифургон может привезти " + minivan.passengers + " пассажиров на расстояние " + range1 + " миль");
-        System.out.println("Спортивный автомобиль может привезти " + sportcar.passengers + " пассажиров на расстояние " + range2 + " миль");
+        System.out.println("Минифургон может привезти " + minivan.passengers + " пассажиров");
+        minivan.range();
+        System.out.println("Спортивный автомобиль может привезти " + sportcar.passengers + " пассажиров");
+        sportcar.range();
     }
 }
